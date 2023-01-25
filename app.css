@@ -40,13 +40,57 @@ nav>ul {
     flex-grow: 1;
 }
 
-
-
-
 .d-none {
     display: none;
 }
 
 .v-none {
     visibility: hidden;
+}
+
+#booker {
+    text-align: center;
+}
+
+#booker-grid-holder {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.booking-grid {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    padding: 10px;
+}
+
+.booking-grid-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.booking-grid-cell {
+    display: flex;
+    width: 25%;
+    aspect-ratio: 1;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    box-sizing: border-box;
+    color: white;
+}
+
+.unavailable-seat {
+    background-color: red;
+}
+
+.available-seat {
+    background-color: green;
+}
+
+.selected-seat {
+    border: 4px outset rgb(0, 0, 0);
 }
