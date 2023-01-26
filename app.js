@@ -4,6 +4,7 @@ let selected_movie = "";
 let selected_seats = [];
 
 const main = document.getElementById("container");
+const booker_div = document.getElementById('booker');
 const booker_grid_holder = document.getElementById('booker-grid-holder');
 const book_tkt_btn = document.getElementById("book-ticket-btn");
 
@@ -106,5 +107,62 @@ const set_book_ticket_btn_visibility = () => {
 }
 
 book_tkt_btn.addEventListener('click', () => {
-	console.log(selected_movie, selected_seats);
+	const confirm_purchase_div = document.createElement("div");
+	confirm_purchase_div.id = "confirm-purchase";
+
+	const cp_heading = document.createElement('h3');
+	cp_heading.innerHTML = `Confirm your booking for seat numbers:${selected_seats.join(", ")}`;
+	confirm_purchase_div.appendChild(cp_heading);
+
+	const cp_form = document.createElement('form');
+	cp_form.id = "customer-detail-form";
+	const email_label = document.createElement('label');
+	email_label.innerHTML = "Email";
+	email_label.setAttribute('for', 'email');
+	const email_input = document.createElement('input');
+	email_input.id = 'email';
+	email_input.type = 'email';
+	email_input.name = 'email_id';
+	email_input.required = true;
+	const br_element = document.createElement('br');
+	const phone_label = document.createElement('label');
+	phone_label.innerHTML = "Phone number";
+	phone_label.setAttribute('for', 'phone');
+	const phone_input = document.createElement('input');
+	phone_input.id = 'phone';
+	phone_input.name = 'phone_number';
+	phone_input.type = 'tel';
+	phone_input.required = true;
+	const submit_input = document.createElement('input');
+	submit_input.type = "submit";
+
+	[email_label, email_input, br_element, phone_label, phone_input, submit_input].forEach(element => {
+		cp_form.appendChild(element);
+	})
+
+	cp_form.addEventListener('formdata', confirm_purchase_handler);
+
+	confirm_purchase_div.appendChild(cp_form);
+	booker_div.replaceChildren(confirm_purchase_div);
 })
+
+function confirm_purchase_handler(event) {
+	event.preventDefault();
+	const successFormData = event.formData;
+
+	const success_div = document.createElement('div');
+	success_div.id = 'Success';
+
+	const success_h3 = document.createElement('h3');
+	success_h3.innerHTML = "Booking details";
+	const success_seats = document.createTextNode(`Seats: ${selected_seats.join(", ")}`);
+	const br_element_1 = document.createElement('br');
+	const success_phone = document.createTextNode(`Phone number: ${successFormData.get('phone_number')}`);
+	const br_element_2 = document.createElement('br');
+	const success_email = document.createTextNode(`Email: ${successFormData.get('email_id')}`);
+	[success_h3, success_seats, br_element_1, success_phone, br_element_2, success_email].forEach(el => {
+		success_div.appendChild(el);
+	})
+
+	booker_div.replaceChildren(success_div);
+}
