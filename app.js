@@ -42,16 +42,17 @@ fetchMovieList().then(data => {
 const movie_anchor_handler = (movie_name) => (event) => {
 	event.preventDefault();
 	const booker_h3 = document.querySelector('#booker>h3');
+	selected_seats = []; // every time a movie tile is clicked, reset seat selection
 	if (movie_name === selected_movie) {
 		selected_movie = "";
 		booker_h3.classList.add("v-none");
+		booker_grid_holder.innerHTML = "";
 	} else {
 		booker_h3.classList.remove("v-none");
 		selected_movie = movie_name;
+		booker_grid_holder.innerHTML = "Loading...";
+		fetchMovieAvailability(movie_name).then(movie_availability_handler);
 	}
-	selected_seats = []; // every time a movie tile is clicked, reset seat selection
-	booker_grid_holder.innerHTML = "Loading...";
-	fetchMovieAvailability(movie_name).then(movie_availability_handler);
 }
 
 const movie_availability_handler = data => {
