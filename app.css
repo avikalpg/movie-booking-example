@@ -7,16 +7,32 @@
 nav {
     display: flex;
     background-color: blue;
-    padding: 12px 16px;
+    padding: 0px 16px;
     color: white;
 }
 
 .logo {
     flex-grow: 1;
+    padding: 12px 0px;
+    font-weight: bold;
 }
 
 nav>ul {
     display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav>ul>li {
+    cursor: pointer;
+    width: 120px;
+    text-align: center;
+    padding: 12px;
+}
+
+nav>ul>li:hover {
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 #loader {
