@@ -27,17 +27,27 @@ nav>ul {
 
 .movie-img-wrapper {
     background-size: cover;
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    aspect-ratio: 2/3;
 }
 
 .movie-holder {
     display: flex;
     justify-content: space-evenly;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
 .movie-holder>a {
+    flex-basis: 100px;
     flex-grow: 1;
+    margin: 24px 3%;
+}
+
+.movie-holder>a>div {
+    width: 100%;
+    text-align: center;
+    font-size: medium;
 }
 
 .d-none {
@@ -93,4 +103,24 @@ nav>ul {
 
 .selected-seat {
     border: 4px outset rgb(0, 0, 0);
+}
+
+#customer-detail-form {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: repeat(40px);
+    width: fit-content;
+    margin: 20px auto 10px auto;
+}
+
+#customer-detail-form>* {
+    margin: 5px;
+}
+
+#customer-detail-form>label {
+    text-align: left;
+}
+
+#customer-detail-form>input[type="submit"] {
+    grid-column: 1/3;
 }

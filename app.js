@@ -25,7 +25,6 @@ fetchMovieList().then(data => {
 		const movie_img_wrapper = document.createElement("div");
 		movie_img_wrapper.classList.add("movie-img-wrapper");
 		movie_img_wrapper.style.backgroundImage = `url(${movie.imgUrl})`;
-		movie_img_wrapper.style.backgroundSize = "cover";
 
 		const movie_heading = document.createElement("h4");
 		movie_heading.innerHTML = movie.name;
@@ -124,7 +123,6 @@ book_tkt_btn.addEventListener('click', () => {
 	email_input.type = 'email';
 	email_input.name = 'email_id';
 	email_input.required = true;
-	const br_element = document.createElement('br');
 	const phone_label = document.createElement('label');
 	phone_label.innerHTML = "Phone number";
 	phone_label.setAttribute('for', 'phone');
@@ -136,7 +134,7 @@ book_tkt_btn.addEventListener('click', () => {
 	const submit_input = document.createElement('input');
 	submit_input.type = "submit";
 
-	[email_label, email_input, br_element, phone_label, phone_input, submit_input].forEach(element => {
+	[email_label, email_input, phone_label, phone_input, submit_input].forEach(element => {
 		cp_form.appendChild(element);
 	})
 
